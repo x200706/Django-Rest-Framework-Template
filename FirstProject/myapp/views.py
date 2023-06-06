@@ -1,8 +1,8 @@
 from django.http import JsonResponse
 from django.db import transaction
 from rest_framework.generics import GenericAPIView
-from FirstProject.myapp.serializers import UserSerializer
-from models import User
+from myapp.serializers import UserSerializer
+from myapp.models import User
 
 
 class UsersView(GenericAPIView):
