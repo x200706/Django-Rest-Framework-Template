@@ -1,0 +1,2 @@
+# FristDjango
+Frist Django
