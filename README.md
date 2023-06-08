@@ -1,2 +1,2 @@
 # FristDjango
-Frist Django
+Frist Django With Django Rest Framework 
