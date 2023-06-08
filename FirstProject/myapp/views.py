@@ -9,13 +9,18 @@ class UsersView(GenericAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    def get(self, request, *args, **krgs):
+    def get(self, request, *args, **kwargs):
         users = self.get_queryset()
         serializer = self.serializer_class(users, many=True)
         data = serializer.data
-        return JsonResponse(data, safe=False)
+        response_data = {
+            "message": "Success",
+            "code": "SUCCESS",
+            "data": data
+        }
+        return JsonResponse(response_data, safe=False)
 
-    def post(self, request, *args, **krgs):
+    def post(self, request, *args, **kwargs):
         data = request.data
         try:
             serializer = self.serializer_class(data=data)
@@ -23,6 +28,15 @@ class UsersView(GenericAPIView):
             with transaction.atomic():
                 serializer.save()
             data = serializer.data
+            response_data = {
+                "message": "Success",
+                "code": "SUCCESS",
+                "data": data
+            }
         except Exception as e:
-            data = {'error': str(e)}
-        return JsonResponse(data)
+            response_data = {
+                "message": "Something throw a exception.",
+                "code": "SOME_EXCEPTION",
+                "error": str(e) # 不過比起這樣打印，我比較想記入日誌就好
+            }
+        return JsonResponse(response_data)
