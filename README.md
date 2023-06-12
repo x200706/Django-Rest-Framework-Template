@@ -1,2 +1,4 @@
-# FristDjango
-Frist Django With Django Rest Framework 
+# OurDRF
+Our = me + Faiz
+
+DRF = Django Rest Framework
