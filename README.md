@@ -1,4 +1,1 @@
-# OurDRF
-Our = me + Faiz
-
-DRF = Django Rest Framework
+Django With Django Rest Framework
